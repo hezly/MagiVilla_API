@@ -4,6 +4,7 @@ using MagiVilla_VillaAPI.Data;
 using MagiVilla_VillaAPI.Logging;
 using MagiVilla_VillaAPI.Profiles;
 using MagiVilla_VillaAPI.Repositories;
+using MagiVilla_VillaAPI.Repositories.IRepository;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 

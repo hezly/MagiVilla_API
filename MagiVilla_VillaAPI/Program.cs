@@ -2,7 +2,10 @@
 
 using MagiVilla_VillaAPI.Data;
 using MagiVilla_VillaAPI.Logging;
+using MagiVilla_VillaAPI.Profiles;
+using MagiVilla_VillaAPI.Repositories;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +14,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
 });
+builder.Services.AddScoped<IVillaRepository, VillaRepository>();
+//builder.Services.AddAutoMapper(typeof(MappingConfig));
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly(), typeof(Program).Assembly);
 builder.Services.AddControllers(option =>
 {
     //option.ReturnHttpNotAcceptable=true;

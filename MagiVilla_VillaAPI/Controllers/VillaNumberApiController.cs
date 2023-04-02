@@ -38,7 +38,7 @@ namespace MagiVilla_VillaAPI.Controllers
             {
                 //_logger.Log("Getting all villas", "");
                 //return Ok(VillaStore.VillaList);
-                IEnumerable<VillaNumber> villaList = await _dbVillaNumber.GetAllAsync();
+                IEnumerable<VillaNumber> villaList = await _dbVillaNumber.GetAllAsync(includeProperties:"Villa");
                 _response.Result = _mapper.Map<List<VillaNumberDTO>>(villaList);
                 _response.StatusCode = HttpStatusCode.OK;
             }
@@ -69,8 +69,7 @@ namespace MagiVilla_VillaAPI.Controllers
                 {
                     return NotFound();
                 }
-                IEnumerable<VillaNumber> villaList = await _dbVillaNumber.GetAllAsync();
-                _response.Result = _mapper.Map<VillaNumberDTO>(villaList);
+                _response.Result = _mapper.Map<VillaNumberDTO>(villa);
                 _response.StatusCode = HttpStatusCode.OK;
             }
             catch (Exception e)

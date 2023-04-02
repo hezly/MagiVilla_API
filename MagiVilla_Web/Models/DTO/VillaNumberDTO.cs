@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MagiVilla_VillaAPI.Models
+namespace MagiVilla_Web.Models.DTO
 {
     public class VillaNumberDTO
     {

@@ -68,8 +68,7 @@ namespace MagiVilla_VillaAPI.Controllers
                 {
                     return NotFound();
                 }
-                IEnumerable<Villa> villaList = await _dbVilla.GetAllAsync();
-                _response.Result = _mapper.Map<VillaDTO>(villaList);
+                _response.Result = _mapper.Map<VillaDTO>(villa);
                 _response.StatusCode = HttpStatusCode.OK;
             }
             catch (Exception e)

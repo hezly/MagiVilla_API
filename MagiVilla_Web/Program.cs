@@ -1,6 +1,18 @@
+using MagiVilla_Web.Services;
+using MagiVilla_Web.Services.IServices;
+using System.Reflection;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly(), typeof(Program).Assembly);
+
+builder.Services.AddHttpClient<IVillaService, VillaService>();
+builder.Services.AddScoped<IVillaService, VillaService>();
+
+builder.Services.AddHttpClient<IVillaNumberService, VillaNumberService>();
+builder.Services.AddScoped<IVillaNumberService, VillaNumberService>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

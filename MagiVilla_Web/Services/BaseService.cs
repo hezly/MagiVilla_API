@@ -3,6 +3,7 @@ using MagiVilla_Web.Models;
 using MagiVilla_Web.Services.IServices;
 using Newtonsoft.Json;
 using System;
+using System.Net;
 using System.Text;
 
 namespace MagiVilla_Web.Services
@@ -48,6 +49,21 @@ namespace MagiVilla_Web.Services
                 HttpResponseMessage response = null;
                 response = await client.SendAsync(message);
                 var apiContent = await response.Content.ReadAsStringAsync();
+                try
+                {
+                    APIResponseModel APIResponse = JsonConvert.DeserializeObject<APIResponseModel>(apiContent);
+                    if (APIResponse.StatusCode == HttpStatusCode.BadRequest || APIResponse.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        APIResponse.StatusCode = HttpStatusCode.BadRequest;
+                        APIResponse.IsSuccess = false;
+                        var result = JsonConvert.SerializeObject(APIResponse);
+                        return JsonConvert.DeserializeObject<T>(result);
+                    }
+                }
+                catch (Exception)
+                {
+                    return JsonConvert.DeserializeObject<T>(apiContent);
+                }
                 return JsonConvert.DeserializeObject<T>(apiContent);
             }
             catch (Exception e)

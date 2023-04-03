@@ -18,6 +18,7 @@ namespace MagiVilla_Web.Models.DTO
         [Required]
         public int VillaID { get; set; }
         public string SpecialDetails { get; set; }
+        public VillaDTO Villa { get; set; }
     }
     public class VillaNumberCreateDTO
     {
@@ -26,5 +27,6 @@ namespace MagiVilla_Web.Models.DTO
         [Required]
         public int VillaID { get; set; }
         public string SpecialDetails { get; set; }
+        public List<VillaDTO> Villa { get; set; }
     }
 }

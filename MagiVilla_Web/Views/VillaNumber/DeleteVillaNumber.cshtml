@@ -1,12 +1,13 @@
-﻿@model MagiVilla_Web.Models.VM.VillaNumberCreateVM
+﻿@model MagiVilla_Web.Models.VM.VillaNumberDeleteVM
 
-<form asp-action="CreateNewVillaNumber" method="post">
+<form asp-action="DeleteVillaNumber" method="post">
     <br />
     <div class="container border p-3">
-        <h1 class="text-primary">Create Villa Number</h1>
+        <h1 class="text-primary">Delete Villa Number</h1>
         <hr />
         <div class="row">
             <div asp-validation-summary="All" class="text-danger"></div>
+            <input type="hidden" asp-for="VillaNumber.VillaNo"/>
             <div class="col-2">
                 <label asp-for="VillaNumber.VillaID" class="control-label fs-6"></label>
             </div>
@@ -20,7 +21,7 @@
                 <label asp-for="VillaNumber.VillaNo" class="control-label fs-6"></label>
             </div>
             <div class="col-10 mb-3">
-                <input asp-for="VillaNumber.VillaNo" class="form-control" />
+                <input asp-for="VillaNumber.VillaNo" class="form-control" disabled />
                 <span asp-validation-for="VillaNumber.VillaNo" class="text-danger"></span>
             </div>
             <div class="col-2">
@@ -34,7 +35,7 @@
                 <a asp-action="IndexVillaNumber" class="btn-primary btn form-control">Back to List</a>
             </div>
             <div class="col-5 ">
-                <input type="submit" value="Create" class="btn-primary btn form-control" />
+                <input type="submit" value="Delete" class="btn-danger btn form-control" />
             </div>
         </div>
     </div>

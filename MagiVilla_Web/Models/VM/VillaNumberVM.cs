@@ -26,4 +26,14 @@ namespace MagiVilla_Web.Models.VM
         public VillaNumberUpdateDTO VillaNumber { get; set; }
         public IEnumerable<SelectListItem> VillaList { get; set; }
     }
+
+    public class VillaNumberDeleteVM
+    {
+        public VillaNumberDeleteVM()
+        {
+            VillaNumber = new VillaNumberDTO();
+        }
+        public VillaNumberDTO VillaNumber { get; set; }
+        public IEnumerable<SelectListItem> VillaList { get; set; }
+    }
 }

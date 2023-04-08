@@ -1,4 +1,5 @@
 ﻿using MagiVilla_VillaAPI.Models;
+using MagiVilla_WebAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace MagiVilla_VillaAPI.Data
@@ -11,6 +12,7 @@ namespace MagiVilla_VillaAPI.Data
         }
         public DbSet<Villa> Villas { get; set; }
         public DbSet<VillaNumber> VillaNumbers { get; set; }
+        public DbSet<LocaUser> LocaUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

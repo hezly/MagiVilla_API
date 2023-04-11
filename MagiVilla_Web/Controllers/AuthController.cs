@@ -1,7 +1,12 @@
-﻿using MagiVilla_Web.Models;
+﻿using MagiVilla_Utility;
+using MagiVilla_Web.Models;
 using MagiVilla_Web.Models.DTO;
 using MagiVilla_Web.Services.IServices;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Security.Claims;
 
 namespace MagiVilla_Web.Controllers
 {
@@ -22,9 +27,25 @@ namespace MagiVilla_Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Login(LoginRequestDTO obj)
+        public async Task<IActionResult> Login(LoginRequestDTO obj)
         {
-            return View(obj);
+            APIResponseModel response = await _authService.LoginAsync<APIResponseModel>(obj);
+            if (response != null && response.IsSuccess)
+            {
+                LoginResponseDTO model = JsonConvert.DeserializeObject<LoginResponseDTO>(Convert.ToString(response.Result));
+                var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+                identity.AddClaim(new Claim(ClaimTypes.Name, model.User.UserName));
+                identity.AddClaim(new Claim(ClaimTypes.Role, "admin"));
+                var principal = new ClaimsPrincipal(identity);
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                HttpContext.Session.SetString(SD.SessionToken, model.Token);
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("ErrorMessage", response.ErrorMessage.FirstOrDefault());
+                return View(obj);
+            }
         }
 
         [HttpGet]
@@ -45,13 +66,14 @@ namespace MagiVilla_Web.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult Logout()
+        
+        public async Task<IActionResult> Logout()
         {
-            return View();
+            await HttpContext.SignOutAsync();
+            HttpContext.Session.SetString(SD.SessionToken, "");
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
-
-        [HttpGet]
+        
         public IActionResult AccessDenied()
         {
             return View();

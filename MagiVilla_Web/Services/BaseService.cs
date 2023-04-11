@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System;
 using System.Net;
+using System.Net.Http.Headers;
 using System.Text;
 
 namespace MagiVilla_Web.Services
@@ -48,6 +49,10 @@ namespace MagiVilla_Web.Services
                         break;
                 }
                 HttpResponseMessage response = null;
+                if (!string.IsNullOrEmpty(apiRequestModel.Token))
+                {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiRequestModel.Token);
+                }
                 response = await client.SendAsync(message);
                 var statusCode = response.StatusCode;
                 var apiContent = await response.Content.ReadAsStringAsync();

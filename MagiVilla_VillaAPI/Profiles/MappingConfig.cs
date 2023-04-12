@@ -19,6 +19,7 @@ namespace MagiVilla_VillaAPI.Profiles
             CreateMap<VillaNumber, VillaNumberCreateDTO>().ReverseMap();
 
             CreateMap<UserDTO, LocaUser>().ReverseMap();
+            CreateMap<ApplicationUser, UserDTO>().ReverseMap();
         }
     }
 }

@@ -10,5 +10,8 @@ namespace MagiVilla_VillaAPI.Repositories.IRepository
         Task CreateAsync(T entity);
         Task RemoveAsync(T entity);
         Task SaveAsync();
+        void BeginTransaction();
+        void CommitTransaction();
+        void RollbackTransaction();
     }
 }

@@ -3,6 +3,7 @@ using Azure;
 using MagiVilla_VillaAPI.Data;
 using MagiVilla_VillaAPI.Logging;
 using MagiVilla_VillaAPI.Models;
+using MagiVilla_VillaAPI.Repositories;
 using MagiVilla_VillaAPI.Repositories.IRepository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
@@ -120,6 +121,7 @@ namespace MagiVilla_VillaAPI.Controllers.v1
                 //{
                 //    return BadRequest();
                 //}
+                _dbVilla.BeginTransaction();
                 if (await _dbVilla.GetAsync(x => x.Name.ToLower() == createDTO.Name.ToLower()) != null)
                 {
                     ModelState.AddModelError("ErrorMessages", "Villa Already Exists!");
@@ -135,10 +137,13 @@ namespace MagiVilla_VillaAPI.Controllers.v1
                 _response.Result = _mapper.Map<VillaDTO>(villa);
                 _response.StatusCode = HttpStatusCode.Created;
 
+                _dbVilla.CommitTransaction(); // Commit the transaction if all operations succeed
+
                 return CreatedAtRoute("GetVilla", new { id = villa.Id }, _response);
             }
             catch (Exception e)
             {
+                _dbVilla.RollbackTransaction(); // Rollback the transaction if an error occurs
                 _response.IsSuccess = false;
                 _response.ErrorMessage = new List<string> { e.Message.ToString() };
                 throw;

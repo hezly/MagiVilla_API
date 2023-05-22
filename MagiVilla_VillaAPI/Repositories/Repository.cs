@@ -3,6 +3,7 @@ using MagiVilla_VillaAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using MagiVilla_VillaAPI.Repositories.IRepository;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace MagiVilla_VillaAPI.Repositories
 {
@@ -10,6 +11,7 @@ namespace MagiVilla_VillaAPI.Repositories
     {
         private readonly ApplicationDbContext _db;
         internal DbSet<T> _dbSet;
+        private IDbContextTransaction _transaction;
         public Repository(ApplicationDbContext db)
         {
             _db = db;
@@ -76,6 +78,21 @@ namespace MagiVilla_VillaAPI.Repositories
         public async Task SaveAsync()
         {
             await _db.SaveChangesAsync();
+        }
+
+        public void BeginTransaction()
+        {
+            _transaction = _db.Database.BeginTransaction();
+        }
+
+        public void CommitTransaction()
+        {
+            _transaction?.Commit();
+        }
+
+        public void RollbackTransaction()
+        {
+            _transaction?.Rollback();
         }
     }
 }

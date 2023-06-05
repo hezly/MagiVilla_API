@@ -1,12 +1,15 @@
 
 
+using HealthChecks.UI.Client;
 using MagiVilla_VillaAPI.Data;
+using MagiVilla_VillaAPI.Health;
 using MagiVilla_VillaAPI.Logging;
 using MagiVilla_VillaAPI.Models;
 using MagiVilla_VillaAPI.Profiles;
 using MagiVilla_VillaAPI.Repositories;
 using MagiVilla_VillaAPI.Repositories.IRepository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -58,6 +61,9 @@ builder.Services.AddAuthentication(x =>
         };
     }
 );
+
+builder.Services.AddHealthChecks()
+    .AddCheck<DatabaseHealthCheck>("Database");
 
 builder.Services.AddControllers(option =>
 {
@@ -150,6 +156,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseHealthChecks("/_health", new HealthCheckOptions
+{
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});//Add Authorization when needed
 app.UseAuthentication();
 app.UseAuthorization();
 

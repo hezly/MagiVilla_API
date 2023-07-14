@@ -7,7 +7,7 @@ const prod = {
 };
 
 const test = {
-  API_ENDPOINT_URL: '/api'
+  API_ENDPOINT_URL: 'https://localhost:7001/api/v1/VillaAPI'
 };
 
 const getEnv = () => {

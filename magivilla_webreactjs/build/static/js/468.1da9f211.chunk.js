@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkemilus=self.webpackChunkemilus||[]).push([[468],{3468:function(e,u,n){n.r(u),n.d(u,{AuthLayout:function(){return r}});n(2791);var t=n(2347),s=n(5108),a=n(184),r=function(e){var u=e.children;return"loading"===(0,s.useThemeSwitcher)().status?(0,a.jsx)(t.Z,{cover:"page"}):(0,a.jsx)("div",{className:"auth-container",children:u})};u.default=r}}]);
+//# sourceMappingURL=468.1da9f211.chunk.js.map

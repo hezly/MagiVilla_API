@@ -23,6 +23,31 @@ export const protectedRoutes = [
     {
         key: 'dashboard.default',
         path: `${APP_PREFIX_PATH}/dashboards/default`,
-        component: React.lazy(() => import('views/app-views/dashboards/default')),
+        component: React.lazy(() => import('views/app-views/dashboards/default'))
     }
+    ,{
+        key: 'test',
+        path: `${APP_PREFIX_PATH}/test`,
+        component: React.lazy(() => import('views/app-views/test'))
+    }
+    ,{
+        key: 'test.lol',
+        path: `${APP_PREFIX_PATH}/test/lol/*`,
+        component: React.lazy(() => import('views/app-views/test/lol'))
+    }
+    ,{
+        key: 'home',
+        path: `${APP_PREFIX_PATH}/home`,
+        component: React.lazy(() => import('views/app-views/home'))
+    }
+    // ,{
+    //     key: 'villa',
+    //     path: `${APP_PREFIX_PATH}/villa`,
+    //     component: React.lazy(() => import('views/app-views/villa'))
+    // }
+    // ,{
+    //     key: 'villa.villa',
+    //     path: `${APP_PREFIX_PATH}/villa/villa`,
+    //     component: React.lazy(() => import('views/app-views/villa/villa'))
+    // }
 ]

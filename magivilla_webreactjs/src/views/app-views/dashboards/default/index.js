@@ -5,7 +5,7 @@ export const DefaultDashboard = () => {
   
   return (
     <>  
-      Dashboard
+      Dashboard LOL
     </>
   )
 }

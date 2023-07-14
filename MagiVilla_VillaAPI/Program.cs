@@ -142,6 +142,8 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 });
+builder.Services.AddCors();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -160,6 +162,13 @@ app.UseHealthChecks("/_health", new HealthCheckOptions
 {
     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
 });//Add Authorization when needed
+app.UseCors(builder =>
+{
+    builder.AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader();
+});
+
 app.UseAuthentication();
 app.UseAuthorization();
 

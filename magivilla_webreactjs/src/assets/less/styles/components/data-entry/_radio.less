@@ -1,0 +1,27 @@
+.ant-radio {
+    top: 5px;
+}
+
+.dir-rtl {
+    
+    .ant-radio-button-wrapper {
+
+        border-left-width: 1px;
+
+        &:first-child {
+            border-radius: 0 @border-radius-base @border-radius-base 0;
+        }
+
+        &:last-child {
+            border-radius: @border-radius-base 0 0 @border-radius-base;
+        }
+
+        &:not(:first-child) {
+            border-right-width: 0px;
+            &:before {
+                right: -1px;
+                left: auto;
+            }
+        }
+    }
+}

@@ -8,6 +8,7 @@ const VillaItem = () => {
         const response = await fetch(`https://localhost:7001/api/v1/VillaAPI`);
         const data = await response.json();
         setVillas(data.result);
+        console.log(villas);
     }
     useEffect(() => {
         GetVillas();
@@ -17,7 +18,7 @@ const VillaItem = () => {
         villas?.length > 0
             ? (
                 villas.map((villa) => (
-                    <VillaCard villa={villa}/>
+                    <VillaCard key={villa.id} villa={villa}/>
                   ))
             ) : (
                 <div className='empty'>

@@ -1,6 +1,7 @@
 import React from 'react';
 
 const VillaCard = ({villa}) => {
+    console.log(villa)
     return (
         <div className='villa'>
             <div>

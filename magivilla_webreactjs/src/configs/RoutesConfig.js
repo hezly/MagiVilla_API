@@ -40,14 +40,14 @@ export const protectedRoutes = [
         path: `${APP_PREFIX_PATH}/home`,
         component: React.lazy(() => import('views/app-views/home'))
     }
-    // ,{
-    //     key: 'villa',
-    //     path: `${APP_PREFIX_PATH}/villa`,
-    //     component: React.lazy(() => import('views/app-views/villa'))
-    // }
-    // ,{
-    //     key: 'villa.villa',
-    //     path: `${APP_PREFIX_PATH}/villa/villa`,
-    //     component: React.lazy(() => import('views/app-views/villa/villa'))
-    // }
+    ,{
+        key: 'villa',
+        path: `${APP_PREFIX_PATH}/villa`,
+        component: React.lazy(() => import('views/app-views/villa'))
+    }
+    ,{
+        key: 'villa.number',
+        path: `${APP_PREFIX_PATH}/villa-number`,
+        component: React.lazy(() => import('views/app-views/villa-number'))
+    }
 ]

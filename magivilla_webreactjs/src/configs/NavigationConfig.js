@@ -50,6 +50,26 @@ const homeNavTree = [{
   submenu: []
 }]
 
+const villaNav = [{
+  key: 'villa',
+  path: `${APP_PREFIX_PATH}/villa`,
+  title: 'Villa',
+  icon: DashboardOutlined,
+  breadcrumb: false,
+  isGroupTitle: false,
+  submenu: []
+}]
+
+const villaNumberNav = [{
+  key: 'villa-number',
+  path: `${APP_PREFIX_PATH}/villa-number`,
+  title: 'Villa Number',
+  icon: DashboardOutlined,
+  breadcrumb: false,
+  isGroupTitle: false,
+  submenu: []
+}]
+
 const villaNavTree = [{
   key: 'villa',
   path: `${APP_PREFIX_PATH}/home`,
@@ -81,7 +101,9 @@ const navigationConfig = [
   // ...dashBoardNavTree,
   // ...testNavTree
   ...homeNavTree,
-  ...villaNavTree,
+  ...villaNav,
+  ...villaNumberNav,
+  // ...villaNavTree
 ]
 
 export default navigationConfig;

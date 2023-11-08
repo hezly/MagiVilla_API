@@ -1,13 +1,9 @@
 const dev = {
-  API_ENDPOINT_URL: '/api'
+  API_ENDPOINT_URL: 'https://localhost:7001/api'
 };
 
 const prod = {
   API_ENDPOINT_URL: '/api'
-};
-
-const test = {
-  API_ENDPOINT_URL: 'https://localhost:7001/api/v1/VillaAPI'
 };
 
 const getEnv = () => {
@@ -16,8 +12,6 @@ const getEnv = () => {
 			return dev
 		case 'production':
 			return prod
-		case 'test':
-			return test
 		default:
 			break;
 	}

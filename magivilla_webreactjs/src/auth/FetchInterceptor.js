@@ -9,7 +9,7 @@ const unauthorizedCode = [400, 401, 403]
 
 const service = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 60000
+  timeout: 6000
 })
 
 // Config
@@ -18,9 +18,8 @@ const TOKEN_PAYLOAD_KEY = 'authorization'
 // API Request interceptor
 service.interceptors.request.use(config => {
 	const jwtToken = localStorage.getItem(AUTH_TOKEN) || null;
-	
 	if (jwtToken) {
-		config.headers[TOKEN_PAYLOAD_KEY] = jwtToken
+		config.headers[TOKEN_PAYLOAD_KEY] = jwtToken;
 	}
 
   	return config
@@ -29,14 +28,15 @@ service.interceptors.request.use(config => {
 	notification.error({
 		message: 'Error'
 	})
-	Promise.reject(error)
+	return Promise.reject(error)
 })
 
 // API respone interceptor
 service.interceptors.response.use( (response) => {
+	console.log('Response Interceptor:', response);
 	return response.data
 }, (error) => {
-
+	console.log(error)
 	let notificationParam = {
 		message: ''
 	}
@@ -61,7 +61,7 @@ service.interceptors.response.use( (response) => {
 	if (error.response.status === 508) {
 		notificationParam.message = 'Time Out'
 	}
-
+	notificationParam.message = 'asdfadsfadsf';
 	notification.error(notificationParam)
 
 	return Promise.reject(error);

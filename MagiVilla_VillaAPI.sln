@@ -5,9 +5,9 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagiVilla_VillaAPI", "MagiVilla_VillaAPI\MagiVilla_VillaAPI.csproj", "{3DA18133-9E9E-4A98-8C48-40A1CB811D9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagiVilla_Web", "MagiVilla_Web\MagiVilla_Web.csproj", "{7DD983DB-049E-427A-B74C-D33315F53095}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagiVilla_Web", "MagiVilla_Web\MagiVilla_Web.csproj", "{7DD983DB-049E-427A-B74C-D33315F53095}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagiVilla_Utility", "MagiVilla_Utility\MagiVilla_Utility.csproj", "{948339BD-6AFC-4698-B232-166D1D36CC7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagiVilla_Utility", "MagiVilla_Utility\MagiVilla_Utility.csproj", "{948339BD-6AFC-4698-B232-166D1D36CC7F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,7 +20,6 @@ Global
 		{3DA18133-9E9E-4A98-8C48-40A1CB811D9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DA18133-9E9E-4A98-8C48-40A1CB811D9A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7DD983DB-049E-427A-B74C-D33315F53095}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7DD983DB-049E-427A-B74C-D33315F53095}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DD983DB-049E-427A-B74C-D33315F53095}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DD983DB-049E-427A-B74C-D33315F53095}.Release|Any CPU.Build.0 = Release|Any CPU
 		{948339BD-6AFC-4698-B232-166D1D36CC7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

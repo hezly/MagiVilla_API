@@ -5,7 +5,8 @@ const AuthService = {}
 
 AuthService.login = function (data) {
 	return fetch({
-		url: API_BASE_URL + '/v1/userAuth/login',
+		// url: '/auth/login',
+		url: API_BASE_URL + '/v1/UserAuth/login',
 		method: 'post',
 		data: data
 	})
@@ -13,7 +14,7 @@ AuthService.login = function (data) {
 
 AuthService.register = function (data) {
 	return fetch({
-		url: API_BASE_URL + '/v1/userAuth/register',
+		url: '/auth/register',
 		method: 'post',
 		data: data
 	})

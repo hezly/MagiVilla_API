@@ -14,7 +14,8 @@ export const initialState = {
 export const signIn = createAsyncThunk('auth/login',async (data, { rejectWithValue }) => {
 	const { email, password } = data;
 	try {
-		const response = await AuthService.login({email, password});
+		console.log('prompt to login')
+		const response = await AuthService.login({username: email, password});
 		console.log(response)
 		const token = response.data.token;
 		localStorage.setItem(AUTH_TOKEN, token);

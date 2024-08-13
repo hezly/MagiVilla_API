@@ -11,17 +11,16 @@ export const initialState = {
 	token: localStorage.getItem(AUTH_TOKEN) || null
 }
 
-export const signIn = createAsyncThunk('auth/login',async (data, { rejectWithValue }) => {
+export const signIn = createAsyncThunk('auth/login', async (data, { rejectWithValue }) => {
 	const { email, password } = data;
 	try {
-		console.log('prompt to login')
 		const response = await AuthService.login({username: email, password});
-		console.log(response)
-		const token = response.data.token;
+		console.log(response.result.token);
+		const token = response.result.token;
 		localStorage.setItem(AUTH_TOKEN, token);
 		return token;
 	} catch (err) {
-		return rejectWithValue(err.response?.data?.message || 'Error')
+		return rejectWithValue(err.response?.data?.message || 'Error asdf')
 	}
 })
 
@@ -29,8 +28,8 @@ export const signUp = createAsyncThunk('auth/register',async (data, { rejectWith
 	const { email, password } = data
 	try {
 		const response = await AuthService.register({username: email, password});
-		console.log(response)
-		const token = response.data.token;
+		console.log(response.token)
+		const token = response.token;
 		localStorage.setItem(AUTH_TOKEN, token);
 		return token;
 	} catch (err) {

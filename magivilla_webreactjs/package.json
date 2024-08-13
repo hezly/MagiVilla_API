@@ -11,7 +11,7 @@
     "@vx/pattern": "0.0.199",
     "antd": "4.23.6",
     "apexcharts": "^3.23.0",
-    "axios": "^0.21.0",
+    "axios": "^1.6.2",
     "chart.js": "^2.9.4",
     "concurrently": "^5.3.0",
     "d3-fetch": "^2.0.0",

@@ -14,7 +14,7 @@ import {
 	signInWithFacebook 
 } from 'store/slices/authSlice';
 import { useNavigate } from 'react-router-dom'
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 export const LoginForm = props => {
 	
@@ -44,7 +44,7 @@ export const LoginForm = props => {
 	}
 
 	const onLogin = values => {
-		showLoading()
+		showLoading();
 		signIn(values);
 	};
 
